@@ -6,12 +6,12 @@ import javax.money.MonetaryAmount;
 import javax.money.MonetaryAmountFactory;
 import javax.money.format.MonetaryAmountFormat;
 import javax.money.format.MonetaryFormats;
+import static org.assertj.core.api.Assertions.*;
+import org.javamoney.moneta.Money;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.mock;
-import static org.assertj.core.api.Assertions.*;
-import org.javamoney.moneta.Money;
 import static org.mockito.Mockito.when;
 
 public class TransferTest {

@@ -1,7 +1,7 @@
 package com.acme.sample;
 
-import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 import static org.mockito.Mockito.mock;
 
 public class AccountHolderTest {

@@ -2,8 +2,8 @@ package com.acme.sample;
 
 import javax.money.Monetary;
 import javax.money.MonetaryException;
-import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 import static org.mockito.Mockito.mock;
 
 public class AccountTest {

@@ -2,8 +2,8 @@
 package com.acme.sample;
 
 import com.acme.sample.rest.TransferExceptionMapper;
-import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
 public class TransferExceptionMapperTest {
 

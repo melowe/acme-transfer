@@ -1,9 +1,9 @@
 package com.acme.sample.rest.v1;
 
-import com.acme.server.Server;
-import com.acme.server.ServerFactory;
 import com.acme.sample.SampleService;
 import com.acme.sample.rest.SampleApplication;
+import com.acme.server.Server;
+import com.acme.server.ServerFactory;
 import java.net.URI;
 import javax.json.Json;
 import javax.json.JsonObject;
