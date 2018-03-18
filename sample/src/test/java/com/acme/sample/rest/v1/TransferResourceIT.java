@@ -1,7 +1,7 @@
 package com.acme.sample.rest.v1;
 
-import com.acme.factory.Server;
-import com.acme.factory.ServerFactory;
+import com.acme.server.Server;
+import com.acme.server.ServerFactory;
 import com.acme.sample.SampleService;
 import com.acme.sample.rest.SampleApplication;
 import java.net.URI;

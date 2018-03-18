@@ -1,7 +1,7 @@
-package com.acme.launcher;
+package com.acme.server.jersey;
 
 
-import com.acme.factory.Server;
+import com.acme.server.Server;
 
 import java.net.URI;
 import java.util.HashMap;

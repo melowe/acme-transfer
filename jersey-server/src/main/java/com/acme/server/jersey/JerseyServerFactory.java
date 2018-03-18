@@ -1,8 +1,8 @@
 
-package com.acme.launcher;
+package com.acme.server.jersey;
 
-import com.acme.factory.Server;
-import com.acme.factory.ServerFactory;
+import com.acme.server.Server;
+import com.acme.server.ServerFactory;
 import java.net.URI;
 import javax.ws.rs.core.Application;
 

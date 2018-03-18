@@ -1,5 +1,5 @@
 
-package com.acme.factory;
+package com.acme.server;
 
 import java.net.URI;
 import java.util.ServiceLoader;

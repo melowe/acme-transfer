@@ -1,8 +1,8 @@
 
 package com.acme.sample.rest;
 
-import com.acme.factory.Server;
-import com.acme.factory.ServerFactory;
+import com.acme.server.Server;
+import com.acme.server.ServerFactory;
 import com.acme.sample.SampleService;
 import java.io.InputStream;
 import java.net.InetAddress;
