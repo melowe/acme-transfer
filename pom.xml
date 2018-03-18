@@ -26,6 +26,12 @@
                 <scope>import</scope>
             </dependency>
             
+            <dependency>
+                <groupId>com.acme</groupId>
+                <artifactId>rest-server</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
             
             <dependency>
                 <groupId>junit</groupId>
@@ -85,7 +91,7 @@
     
     <build>
         <plugins>
-               <plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.0</version>

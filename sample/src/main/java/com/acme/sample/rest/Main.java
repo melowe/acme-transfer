@@ -4,6 +4,7 @@ package com.acme.sample.rest;
 import com.acme.factory.Server;
 import com.acme.factory.ServerFactory;
 import com.acme.sample.SampleService;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.URI;
 import java.util.logging.LogManager;
@@ -13,10 +14,9 @@ public class Main {
     
     public static void main(String... args) throws Exception {
     
-        System.setProperty("java.util.logging.config.file", Main.class.getResource("/logging.properties").getFile());
-
-        LogManager.getLogManager().readConfiguration();
-        
+        try (InputStream loggingConfig = Main.class.getResourceAsStream("/logging.properties")) {
+            LogManager.getLogManager().readConfiguration(loggingConfig);
+        }
         final String address = InetAddress.getLocalHost().getCanonicalHostName();
 
         final URI uri = UriBuilder.fromUri("http://0.0.0.0/").port(8080).build();

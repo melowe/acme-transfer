@@ -3,7 +3,6 @@ package com.acme.sample.rest;
 
 import com.acme.sample.SampleService;
 import com.acme.sample.rest.v1.TransferResource;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
