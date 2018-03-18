@@ -12,9 +12,10 @@ import java.util.logging.Logger;
 import javax.ws.rs.core.Application;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
-import org.glassfish.jersey.internal.RuntimeDelegateImpl;
 
 public class JerseyServer implements Server {
+    
+    private HttpServer server;
     
     private final URI uri;
     
@@ -27,19 +28,10 @@ public class JerseyServer implements Server {
 
     private static final Logger LOGGER = Logger.getLogger(JerseyServer.class.getName());
 
-    private HttpServer server;
-
-    static {
-       
-        Class<?>[] classes = new Class<?>[] {
-            RuntimeDelegateImpl.class
-    };
-    }
-        
+    
     
     @Override
     public void start() throws Exception {
-        RuntimeDelegateImpl r = new RuntimeDelegateImpl();
 
         //https://jersey.github.io/documentation/latest/appendix-properties.html
         final Map<String, Object> initParams = new HashMap<>();

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<xsd:schema version="1.0"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+           elementFormDefault="qualified" 
+           attributeFormDefault="unqualified" 
+           targetNamespace="http://api.acme.com/v1" 
+           xmlns="http://api.acme.com/v1">
+
+    
+    <xsd:complexType name="Account">
+        <xsd:attribute name="number" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="MonetaryAmount">
+        <xsd:attribute name="currency" type="xsd:string" use="required" />
+        <xsd:attribute name="amount" type="xsd:decimal" use="required" />
+    </xsd:complexType>
+    
+    <xsd:complexType name="Transfer">
+        <xsd:sequence>
+            <xsd:element name="from" type="Account" />
+            <xsd:element name="to" type="Account" />
+            <xsd:element name="amount" type="MonetaryAmount" />
+            
+        </xsd:sequence>
+
+    </xsd:complexType>
+    
+    <xsd:element name="transfer" type="Transfer" />
+    
+    
+</xsd:schema>
