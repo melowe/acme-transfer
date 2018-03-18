@@ -41,13 +41,4 @@ public class ActualSampleService implements SampleService {
         datastore.executeTransfer(transfer);
     }
 
-    @Override
-    public MonetaryAmount findBalanceForAccountNumber(String number) {
-        
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
 }
