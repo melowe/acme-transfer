@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import javax.money.MonetaryAmount;
 
-public class Transfer  {
+public class Transfer {
 
     private final LocalDateTime created;
 
     private final Account from;
-    
+
     private final Account to;
 
     private final MonetaryAmount amount;
@@ -32,8 +32,8 @@ public class Transfer  {
     public Account getTo() {
         return to;
     }
-
-    public MonetaryAmount getAmount() {   
+//FIME: Need something unmodifable
+    public MonetaryAmount getAmount() {
         return amount;
     }
 
@@ -66,7 +66,7 @@ public class Transfer  {
             this.created = created;
             return this;
         }
-        
+
         public Builder created() {
             this.created = LocalDateTime.now();
             return this;
@@ -81,9 +81,9 @@ public class Transfer  {
 
         public Transfer build() {
 
-            Objects.requireNonNull(from,"From account is required.");
+            Objects.requireNonNull(from, "From account is required.");
 
-            Objects.requireNonNull(to,"To account is required");
+            Objects.requireNonNull(to, "To account is required");
 
             Objects.requireNonNull(amount, "Amount is required");
 
@@ -91,7 +91,11 @@ public class Transfer  {
                 throw new InvalidTransferException(String.format("Cannot transfer %s to account %s. Account currency is %s", amount.getCurrency(), to.getNumber(), to.getCurrency()));
             }
 
-            return new Transfer(created,from,to, amount);
+            if (!Objects.equals(from.getCurrency(), amount.getCurrency())) {
+                throw new InvalidTransferException(String.format("Cannot transfer %s to account %s. Account currency is %s", amount.getCurrency(), from.getNumber(), to.getCurrency()));
+            }
+            
+            return new Transfer(created, from, to, amount);
         }
 
     }

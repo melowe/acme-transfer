@@ -1,15 +1,15 @@
 
 package com.acme.sample;
 
-import java.util.List;
+import javax.money.MonetaryAmount;
+
 
 public interface Datastore {
     
-    void storeTransaction(Transfer transaction);
+    void executeTransfer(Transfer transaction);
     
     Account findAccountByNumber(String accountNumber);
     
-    List<Account> findAccountsForHolder(AccountHolder accountHolder);
-
+    MonetaryAmount findBalance(Account account);
     
 }

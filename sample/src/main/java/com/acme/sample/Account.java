@@ -11,12 +11,13 @@ public class Account {
     private final String number;
 
     private final CurrencyUnit currency;
-
+    
     private Account(AccountHolder accountHolder, String number, CurrencyUnit currency) {
         this.number = number;
-        this.currency = currency;
         this.accountHolder = accountHolder;
+        this.currency = currency;
     }
+    
 
     public String getNumber() {
         return number;
@@ -29,6 +30,7 @@ public class Account {
     public CurrencyUnit getCurrency() {
         return currency;
     }
+
 
     @Override
     public int hashCode() {
@@ -59,7 +61,7 @@ public class Account {
         private String number;
 
         private String currency;
-
+        
         private Builder() {
         }
 
@@ -82,12 +84,13 @@ public class Account {
             return this;
         }
 
+        
         public Account build() {
             
             Objects.requireNonNull(accountHolder,"Account holder is required");
             Objects.requireNonNull(number,"Account number is required");
             Objects.requireNonNull(currency,"Account currency is required");
-
+            
             final CurrencyUnit currencyUnit = Monetary.getCurrency(currency);
 
             return new Account(accountHolder, number, currencyUnit);

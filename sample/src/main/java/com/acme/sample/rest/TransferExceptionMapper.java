@@ -1,6 +1,7 @@
 
 package com.acme.sample.rest;
 
+import com.acme.sample.InSuffientFundsException;
 import com.acme.sample.InvalidTransferException;
 import com.acme.sample.NoAccountFoundException;
 import com.acme.sample.TransferException;
@@ -16,6 +17,7 @@ public class TransferExceptionMapper implements ExceptionMapper<TransferExceptio
     private final  Map<Class<? extends TransferException>,Response.Status> lookup = new HashMap<Class<? extends TransferException>,Response.Status>() {{
         put(NoAccountFoundException.class,Response.Status.NOT_FOUND);
         put(InvalidTransferException.class,Response.Status.BAD_REQUEST);
+        put(InSuffientFundsException.class,Response.Status.BAD_REQUEST);
     }};
     
     @Override

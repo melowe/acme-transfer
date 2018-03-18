@@ -22,16 +22,31 @@ public class ActualSampleService implements SampleService {
                 .create();
 
         Account fromAccount = datastore.findAccountByNumber(from);
+
+        MonetaryAmount senderBalance =  datastore.findBalance(fromAccount);
+
         Account toAccount = datastore.findAccountByNumber(to);
+        
+        Transfer transfer = Transfer.Builder.create()
+            .from(fromAccount)
+            .to(toAccount)
+            .created()
+            .amount(monetaryAmount)
+            .build();
 
-        Transfer transaction = Transfer.Builder.create()
-        .from(fromAccount)
-        .to(toAccount)
-        .created()
-        .amount(monetaryAmount)
-        .build();
+        if(senderBalance.isLessThan(monetaryAmount)) {
+            throw new InSuffientFundsException("Insuffient funds to transfer");
+        }
+        
+        datastore.executeTransfer(transfer);
+    }
 
-        datastore.storeTransaction(transaction);
+    @Override
+    public MonetaryAmount findBalanceForAccountNumber(String number) {
+        
+        
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

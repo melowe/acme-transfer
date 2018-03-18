@@ -1,6 +1,8 @@
 package com.acme.sample;
 
+import java.math.BigDecimal;
 import javax.money.Monetary;
+import javax.money.MonetaryAmount;
 import javax.money.MonetaryException;
 import static org.assertj.core.api.Assertions.*;
 import org.junit.Test;
@@ -19,6 +21,9 @@ public class AccountTest {
                 .number("ACCOUNT123")
                 .build();
 
+        MonetaryAmount expectedAmount  = Monetary.getDefaultAmountFactory()
+                .setCurrency("HKD").setNumber(BigDecimal.ONE).create();
+        
         assertThat(account).isNotNull();
         assertThat(account.getAccountHolder()).isNotNull();
         assertThat(account.getAccountHolder().getId()).isEqualTo("1234");
@@ -122,7 +127,6 @@ public class AccountTest {
                 .build();
 
         assertThat(account.toString()).isNotNull().isNotEmpty();
-       
     }
     
 }

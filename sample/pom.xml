@@ -24,10 +24,18 @@
                 <version>1.0-SNAPSHOT</version>
                 <scope>runtime</scope>
             </dependency>
+            
+            <dependency>
+                <groupId>org.javamoney</groupId>
+                <artifactId>moneta</artifactId>
+                <version>1.1</version>
+            </dependency>
+            
         </dependencies>
     </dependencyManagement>
     
     <dependencies>
+        
         <dependency>
             <groupId>com.acme</groupId>
             <artifactId>rest-server</artifactId>
@@ -38,10 +46,10 @@
             <artifactId>jersey-server</artifactId>
             <scope>runtime</scope>
         </dependency>
+        
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
-            <version>1.1</version>
         </dependency>
 
     </dependencies>
@@ -78,101 +86,6 @@
                             </excludes>
 
                         </filter>
-                     
-<!--                        <filter>
-                            <artifact>org.glassfish.jersey.core:jersey-common</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>
-                        
-                        <filter>
-                            <artifact>org.glassfish.jersey.core:jersey-server</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>
-                        
-                        <filter>
-                            <artifact>com.acme:*</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>
-                        
-                        <filter>
-                            <artifact>javax.ws.rs:javax.ws.rs-api</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>
-
-                        <filter>
-                            <artifact>org.javamoney:moneta</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>
-                                
-                        <filter>
-                            <artifact>javax.money:*</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>    
-                        
-                        <filter>
-                            <artifact>javax.annotation:*</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>     
-                        
-                        <filter> 
-                            <artifact>org.glassfish.jersey.containers:*</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>     
-                        <filter>
-                            
-                            <artifact>org.glassfish.grizzly:grizzly-http-server</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>     
-                        <filter>
-                            
-                            <artifact>org.glassfish.grizzly:grizzly-framework</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>   
-
-                        <filter>
-                            
-                            <artifact>org.glassfish.jersey.inject:jersey-hk2</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>   
-                        <filter>
-                            
-                            <artifact>org.glassfish.hk2:hk2-api</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>  
-
-                        <filter>
-                            
-                            <artifact>org.glassfish.hk2:hk2-utils</artifact>
-                            <includes>
-                                <include>**</include>
-                            </includes>
-                        </filter>  
--->
-
                     </filters>
                 </configuration>
                 <executions>
@@ -192,7 +105,6 @@
                 <version>0.13.3</version>
                 <configuration>
                     <schemaDirectory>${project.basedir}/src/main/resources/xsd</schemaDirectory>
-                    
                 </configuration>
                 <executions>
                     <execution>
@@ -202,6 +114,26 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                
             </plugin>
             
         </plugins>

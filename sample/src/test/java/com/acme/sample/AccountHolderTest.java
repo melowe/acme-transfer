@@ -9,7 +9,6 @@ public class AccountHolderTest {
     public AccountHolderTest() {
     }
 
-    
     @Test
     public void accountHolderWithSameIdAreEqual() {
         
@@ -32,7 +31,7 @@ public class AccountHolderTest {
                 .isEqualTo(anotherAccountHolder.hashCode());
 
         assertThat(accountHolder.equals(accountHolder)).isTrue();
- 
+
     }
 
     @Test
@@ -66,12 +65,8 @@ public class AccountHolderTest {
         
         assertThat(accountHolder.hashCode())
                 .isNotEqualTo(anotherAccountHolder.hashCode());
-
     } 
-    
-    
-    
-    
+
     @Test(expected = NullPointerException.class)
     public void dontAllowCreationWithoutId() {
         new AccountHolder(null);

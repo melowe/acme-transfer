@@ -1,51 +1,41 @@
 package com.acme.sample;
 
-import java.util.Locale;
 import javax.money.Monetary;
 import javax.money.MonetaryAmount;
 import javax.money.MonetaryAmountFactory;
-import javax.money.format.MonetaryAmountFormat;
-import javax.money.format.MonetaryFormats;
 import static org.assertj.core.api.Assertions.*;
-import org.javamoney.moneta.Money;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class TransferTest {
-
-    public TransferTest() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
+    
     @Test
     public void buildValid() {
 
         MonetaryAmount amount = Monetary.getDefaultAmountFactory()
                 .setCurrency("GBP")
-                .setNumber(100.01).create();
+                .setNumber(1).create();
 
-        Account from = mock(Account.class);
 
-        Account to = mock(Account.class);
-        when(to.getCurrency()).thenReturn(amount.getCurrency());
+        Account from = Account.Builder.create()
+                .number("123456")
+                .accountHolder("SomeOne")
+                .currency("GBP")
+                .build();
+
+        Account to = Account.Builder.create()
+                .number("987654")
+                .accountHolder("SomeOneElse")
+                .currency("GBP")
+                .build();
 
         Transfer t = Transfer.Builder.create()
                                             .created()
                                             .amount(amount)
                                             .from(from)
                                             .to(to)
+                
                                             .build();
-
+        
         assertThat(t).isNotNull();
 
     }
@@ -57,12 +47,20 @@ public class TransferTest {
 
         MonetaryAmount amount = monetaryAmountFactory
                 .setCurrency("GBP")
-                .setNumber(100.01).create();
+                .setNumber(1).create();
 
-        Account from = mock(Account.class);
+        Account from = Account.Builder.create()
+                .number("123456")
+                .accountHolder("SomeOne")
+                .currency("GBP")
+                .build();
 
-        Account to = mock(Account.class);
-        when(to.getCurrency()).thenReturn(Monetary.getCurrency("USD"));
+        Account to = Account.Builder.create()
+                .number("987654")
+                .accountHolder("SomeOneElse")
+                .currency("USD")
+                .build();
+        
 
         try {
             Transfer.Builder.create()
@@ -77,34 +75,6 @@ public class TransferTest {
         }
 
     }
-    
-    
-    @Test
-    public void buildInValidDecimalPlacesAmount() {
 
-        MonetaryAmount amount = Monetary.getDefaultAmountFactory()
-                .setCurrency("GBP")
-                
-                .setNumber(100.00199).create();
 
-       ;
-        MonetaryAmountFormat format = MonetaryFormats.getAmountFormat(Locale.getDefault());
-
-        System.out.println(format.format( Money.of(100.1922, "USD")));
-       
-        Account from = mock(Account.class);
-
-        Account to = mock(Account.class);
-        when(to.getCurrency()).thenReturn(amount.getCurrency());
-
-        Transfer t = Transfer.Builder.create()
-                                            .created()
-                                            .amount(amount)
-                                            .from(from)
-                                            .to(to)
-                                            .build();
-
-        assertThat(t).isNotNull();
-
-    }
 }

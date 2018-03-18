@@ -46,8 +46,14 @@ public class ActualSampleServiceTest {
         when(datastore.findAccountByNumber("ACC1234")).thenReturn(mockedAccount);
         when(datastore.findAccountByNumber("ACC4321")).thenReturn(mockedAccount);
         
+        when(datastore.findBalance(mockedAccount))
+                .thenReturn(
+                            Monetary.getDefaultAmountFactory()
+                                    .setCurrency("TMM").setNumber(300d)
+                                    .create());
+        
         doAnswer(i -> results.add(i.getArgument(0)))
-                .when(datastore).storeTransaction(any(Transfer.class));
+                .when(datastore).executeTransfer(any(Transfer.class));
 
         service.transfer("ACC1234", "ACC4321", new BigDecimal("109.23"), "TMM");
 
@@ -72,8 +78,8 @@ public class ActualSampleServiceTest {
   
         verify(datastore).findAccountByNumber("ACC1234");
         verify(datastore).findAccountByNumber("ACC4321");
-      
-        verify(datastore).storeTransaction(any(Transfer.class));
+        verify(datastore).findBalance(mockedAccount);
+        verify(datastore).executeTransfer(any(Transfer.class));
         
         
     }
