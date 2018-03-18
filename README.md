@@ -38,6 +38,14 @@ Sample project to delivering the exercise
 ####Assumptions
 1. Account number is assumed to be unique ideally something like an iban
 2. That a accounts only hold single currencies and transfers must be of that currency
-3. 
+
+#### Notes
+
+<pre>
+If during start up there's a port conflict  
+com.acme.sample.rest.Main.SERVER_URI 
+
+com.acme.sample.rest.Main is also the class to run in case you're running from an IDE. 
+</pre>
 
 
