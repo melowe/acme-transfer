@@ -22,7 +22,11 @@ cd acme-transfer<br />
 mvn install<br />
 java -jar sample/target/sample-1.0-SNAPSHOT.jar<br />
 
-curl -d '{"from":{"number":"1342672"},"to":{"number":"2882882"},"amount":{"amount POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/json"
+curl -d '{"from":{"number":"1342672"},"to":{"number":"2882882"},"amount":{"amount":100.98,"currency":"GBP"}}' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/json"
+
+or 
+
+curl -d '<transfer><from number="1342672" /><to number="2882882" /><amount amount="100.98" currency="GBP" /></transfer>' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/xml"
 </pre>
 
 # acme-transfer
