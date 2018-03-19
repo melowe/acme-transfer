@@ -21,6 +21,8 @@ Implicit requirements:
 cd acme-transfer<br />
 mvn install<br />
 java -jar sample/target/sample-1.0-SNAPSHOT.jar<br />
+
+curl -d '{"from":{"number":"1342672"},"to":{"number":"2882882"},"amount":{"amount POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/json"
 </pre>
 
 # acme-transfer
