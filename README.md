@@ -17,21 +17,20 @@ Implicit requirements:
 7.  there are no detailed requirements, use common sense.
 
 #Build and run
-<pre>
-cd acme-transfer<br />
-mvn install<br />
-java -jar sample/target/sample-1.0-SNAPSHOT.jar<br />
-</pre>
 
-<pre>
-curl -d '{"from":{"number":"1342672"},"to":{"number":"2882882"},"amount":{"amount":100.98,"currency":"GBP"}}' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/json"<br />
-</pre>
-or <br />
+`cd acme-transfer`
 
-<pre>
-curl -d '&lt;transfer&gt;&lt;from number="1342672" /&gt;&lt;to number="2882882" /&gt;&lt;amount amount="100.98" currency="GBP" /&gt;&lt;/transfer&gt;' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/xml"<br />
+`mvn install`
 
-</pre>
+`java -jar sample/target/sample-1.0-SNAPSHOT.jar`
+
+
+`curl -d '{"from":{"number":"1342672"},"to":{"number":"2882882"},"amount":{"amount":100.98,"currency":"GBP"}}' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/json"`
+
+or
+
+`curl -d '<transfer><from number="1342672" /><to number="2882882" /><amount amount="100.98" currency="GBP" /></transfer>' -X POST http://localhost:8080/v1/transfers/transfer -H "Content-Type: application/xml"`
+
 
 # acme-transfer
 Parent/root pom
