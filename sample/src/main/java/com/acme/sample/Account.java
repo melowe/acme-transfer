@@ -4,7 +4,7 @@ import java.util.Objects;
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
 
-public class Account {
+public class Account implements Comparable<Account>{
 
     private final AccountHolder accountHolder;
 
@@ -52,6 +52,11 @@ public class Account {
         }
         final Account other = (Account) obj;
         return Objects.equals(this.number, other.number);
+    }
+
+    @Override
+    public int compareTo(Account o) {
+        return o.number.compareTo(number);
     }
 
     public static class Builder {

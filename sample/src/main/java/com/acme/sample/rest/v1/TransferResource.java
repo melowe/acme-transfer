@@ -2,6 +2,7 @@ package com.acme.sample.rest.v1;
 
 import com.acme.sample.SampleService;
 import java.math.BigDecimal;
+import java.util.Objects;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,9 +16,9 @@ public class TransferResource {
     private final SampleService service;
 
     public TransferResource(SampleService service) {
-        this.service = service;
+        this.service = Objects.requireNonNull(service);
     }
-    
+   
     @POST
     @Path("transfer")
     @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})

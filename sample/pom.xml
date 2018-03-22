@@ -29,8 +29,14 @@
                 <groupId>org.javamoney</groupId>
                 <artifactId>moneta</artifactId>
                 <version>1.1</version>
+                <scope>runtime</scope>
             </dependency>
             
+        <dependency>
+            <groupId>javax.money</groupId>
+            <artifactId>money-api</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         </dependencies>
     </dependencyManagement>
     
@@ -51,7 +57,11 @@
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
         </dependency>
-
+        
+        <dependency>
+            <groupId>javax.money</groupId>
+            <artifactId>money-api</artifactId>
+        </dependency>
     </dependencies>
     
     <build>
@@ -84,7 +94,7 @@
                                 <exclude>META-INF/*.RSA</exclude>
                                 <exclude>META-INF/maven/**</exclude>
                             </excludes>
-
+                                
                         </filter>
                     </filters>
                 </configuration>
@@ -116,13 +126,13 @@
                 </executions>
             </plugin>
             
-            
+            <!-- TODO: use pre and post integration test phases to start and stop service -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.21.0</version>
                 <configuration>
-
+                    <forkCount>1</forkCount>
                 </configuration>
                 <executions>
                     <execution>

@@ -16,7 +16,9 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,10 +29,10 @@ public class TransferResourceIT {
 
     private static final URI SERVICE_URI = Main.SERVER_URI;
 
-    private static Server server;
+    private Server server;
 
-    @BeforeClass
-    public static void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         
         SampleService sampleService = new ActualSampleService(new MemoryDatastore(Main.buildAccountData()));
         SampleApplication application = new SampleApplication(sampleService);
@@ -41,9 +43,10 @@ public class TransferResourceIT {
 
     }
 
-    @AfterClass
-    public static void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
         server.stop();
+        
     }
 
     @Test
